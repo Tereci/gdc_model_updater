@@ -120,7 +120,7 @@ module GdcMover
     		end
         else 
     		GoodData.project.datasets.each do |dataset|
-    			maql = maql + "SYNCHRONIZE {#{dataset.identifier}};"
+          maql = maql + "SYNCHRONIZE {#{dataset.identifier}};" unless (dataset.identifier.include?(".dt") or dataset.identifier.include?(".time."))
     		end
     	end
       
