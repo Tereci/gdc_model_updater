@@ -73,7 +73,7 @@ begin
 	# updater.execute_maql(pid, "drop_references.maql")
   
   # examples of synchronize datasets
-  updater.synchronize_datasets() # sync all datasets
+  # updater.synchronize_datasets() # sync all datasets
   # updater.synchronize_datasets(["opportunity, account"]) # sync only given datasets
   
   # example of move(source_dataset,target_dataset,object) for both attribute or fact. Attribute will be moved together with its labels.
