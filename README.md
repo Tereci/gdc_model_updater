@@ -6,8 +6,8 @@ rubygems, gooddata and logger ruby gems installed
 
 ## Usage
 * Download the two ruby files into a directory.   
-* Add maql files into the directory.  
-* Open update_mode.rb  
+* If you have some add maql files into the directory.  
+* Open update_model.rb  
 * Add updater.execute_maql, updater.move and updater.synchronize calls as desired.  
 	* updater.execute_maql will accept path to file with maql and will execute it on the server
 	* updater.move will move attribute/fact between datasets and synchronize affected datasets - that means that it will also delete data from the datasets. After this operation CLtools update maql stops working properly. It will still generate the update maql but you have to be careful and manualy remove parts that are trying to delete and recreate moved attribute/fact.
