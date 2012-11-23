@@ -110,7 +110,7 @@ module GdcMover
 			return nil
     end
     
-    def synchronize_datasets(pid, datasets="all")
+    def synchronize_datasets(pid, datasets="all", exclude_datasets=[])
    		GoodData.use pid
     	maql = ""
       
@@ -120,7 +120,7 @@ module GdcMover
     		end
         else 
     		GoodData.project.datasets.each do |dataset|
-          maql = maql + "SYNCHRONIZE {#{dataset.identifier}};" unless (dataset.identifier.include?(".dt") or dataset.identifier.include?(".time."))
+          maql = maql + "SYNCHRONIZE {#{dataset.identifier}};" unless (dataset.identifier.include?(".dt") or dataset.identifier.include?(".time.") or exclude_datasets.include?(dataset.identifier.gsub("dataset.","")))
     		end
     	end
       

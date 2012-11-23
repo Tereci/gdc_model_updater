@@ -36,11 +36,11 @@ class Updater
     @logger.puts key
   end
   
-  def synchronize_datasets(datasets="all", pid=@pid)
+  def synchronize_datasets(datasets="all", exclude_datasets=[], pid=@pid)
   	fail "pid must be specified" if pid.nil?
   	key = "#{pid}\tsync_dt\t#{datasets.to_s}"
     return if @done[key]
-    @viewer.synchronize_datasets(pid, datasets)
+    @viewer.synchronize_datasets(pid, datasets, exclude_datasets)
     @logger.puts key
   end
   
@@ -75,6 +75,8 @@ begin
   # examples of synchronize datasets
   # updater.synchronize_datasets() # sync all datasets
   # updater.synchronize_datasets(["opportunity, account"]) # sync only given datasets
+  # updater.synchronize_datasets("all",["timelinedata"]) # sync all but timelinedata
+
   
   # example of move(source_dataset,target_dataset,object) for both attribute or fact. Attribute will be moved together with its labels.
   # updater.move("opportunity","account","staff")
